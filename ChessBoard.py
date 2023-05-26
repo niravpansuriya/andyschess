@@ -16,9 +16,19 @@ class ChessBoard:
         playerColor = player.getPlayerColor()
         pieces = player.getPieces()
 
-        #print pawns
+        # print pawns
         for position in pieces["p"]:
             self.putPiece("p", playerColor, position)
+
+        # print other pieces
+        self.putPiece("k", playerColor, player.pieces["k"])
+        self.putPiece("q", playerColor, player.pieces["q"])
+        self.putPiece("r", playerColor, player.pieces["r"][0])
+        self.putPiece("r", playerColor, player.pieces["r"][1])
+        self.putPiece("n", playerColor, player.pieces["n"][0])
+        self.putPiece("n", playerColor, player.pieces["n"][1])
+        self.putPiece("b", playerColor, player.pieces["b"][0])
+        self.putPiece("b", playerColor, player.pieces["b"][1])
 
     def putPiece(self, piece, color, position):
         row, col = position
