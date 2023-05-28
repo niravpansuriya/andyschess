@@ -8,8 +8,8 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Chess Board")
 
-    player1 = Player("Nirav", "white")
-    player2 = Player("Andy", "black")
+    player1 = Player("Nirav", "w")
+    player2 = Player("Andy", "b")
 
     chessBoard = ChessBoard(screen, player1, player2)
 
@@ -18,7 +18,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                chessBoard.handleClick(event.pos)
+                
         if not running:
             break
 
