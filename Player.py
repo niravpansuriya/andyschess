@@ -1,8 +1,11 @@
+from Piece import Piece
+
+
 class Player:
     def __init__(self, name, color):
         self.name = name
         self.color = color
-        self.pieces = dict()
+        self.pieces = []
         self.resetPieces()
 
     def getPieces(self):
@@ -12,22 +15,24 @@ class Player:
         return self.color
 
     def resetPieces(self):
-        if self.color == "white":
+        if self.color == "w":
             pawnRow = 1
             otherRow = 0
         else:
             pawnRow = 6
             otherRow = 7
 
-        self.pieces["p"] = []
-
         # set up pawns
         for col in range(8):
-            self.pieces["p"].append((pawnRow, col))
+            pawnPiece = Piece("p", self.color, (pawnRow, col))
+            self.pieces.append(pawnPiece)
 
         # set up other pieces
-        self.pieces["k"] = (otherRow, 3)
-        self.pieces["q"] = (otherRow, 4)
-        self.pieces["r"] = [(otherRow, 0), (otherRow, 7)]
-        self.pieces["n"] = [(otherRow, 1), (otherRow, 6)]
-        self.pieces["b"] = [(otherRow, 2), (otherRow, 5)]
+        self.pieces.append(Piece("k", self.color, (otherRow, 3)))
+        self.pieces.append(Piece("q", self.color, (otherRow, 4)))
+        self.pieces.append(Piece("r", self.color, (otherRow, 0)))
+        self.pieces.append(Piece("r", self.color, (otherRow, 7)))
+        self.pieces.append(Piece("n", self.color, (otherRow, 1)))
+        self.pieces.append(Piece("n", self.color, (otherRow, 6)))
+        self.pieces.append(Piece("b", self.color, (otherRow, 2)))
+        self.pieces.append(Piece("b", self.color, (otherRow, 5)))
