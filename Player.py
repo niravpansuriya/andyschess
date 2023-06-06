@@ -6,11 +6,18 @@ class Player:
         self.name = name
         self.color = color
         self.pieces = []
-        self.resetPieces()
+        # self.resetPieces()
 
+    def addPiece(self, piece):
+        self.pieces.append(piece)
+        
     def getPieces(self):
-        return self.pieces
-
+        pieces = []
+        for piece in self.pieces:
+            if piece.inGame:
+                pieces.append(piece)
+        return pieces
+    
     def getPlayerColor(self):
         return self.color
 
