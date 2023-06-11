@@ -410,20 +410,30 @@ class ChessBoard:
 
         return True
 
+    def removeEmptyMoves(self, nextMoves):
+        res = []
+        for nextMove in nextMoves:
+            if self.getSelectedPiece(nextMove):
+                res.append(nextMove)
+        return res
+    
     def getNextMoves(self, piece):
+        nextMoves = []
         if piece.getType() == "p":
-            return self.getNextMovesForPawns(piece)
+            nextMoves = self.getNextMovesForPawns(piece)
 
         elif piece.getType() == "r":
-            return self.getNextMovesForRook(piece)
+            nextMoves = self.getNextMovesForRook(piece)
 
         elif piece.getType() == "n":
-            return self.getNextMovesForKnight(piece)
+            nextMoves = self.getNextMovesForKnight(piece)
 
         elif piece.getType() == "b":
-            return self.getNextMovesForBishop(piece)
+            nextMoves = self.getNextMovesForBishop(piece)
 
         elif piece.getType() == "q":
-            return self.getNextMovesForQueen(piece)
+            nextMoves = self.getNextMovesForQueen(piece)
         else:
-            return []
+            nextMoves = []
+        
+        return self.removeEmptyMoves(nextMoves)

@@ -62,9 +62,11 @@ def main():
     menuOptions = ["Level 1", "Level 2", "Level 3", "Exit"]
     menu = Menu(screen=screen, options=menuOptions)
 
+    # init player1 and player2
     player1 = Player("Nirav", "w")
     player2 = Player("Andy", "b")
 
+    # init chess board
     chessBoard = ChessBoard(screen, player1, player2)
 
     running = True
